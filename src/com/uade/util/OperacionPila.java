@@ -76,9 +76,19 @@ public class OperacionPila {
        }
        return suma;
     }
-    public int promedioElementos(int suma, int contador){
+    public int promedioElementos(PilaTDA pila1){
+        PilaTDA aux = new PilaTDAImpl();
+        aux.inicializarPila();
+        copiarPila(pila1,aux);
+
+        int suma = sumarElementos(aux);
+        int contador = contarElementos(aux);
+
         int promedio = 0;
-        promedio = suma / contador;
+        if (contador > 0) {
+            promedio = suma / contador;
+        }
+        else { System.out.println("No se puede calcular el promedio"); }
         return promedio;
     }
 }
