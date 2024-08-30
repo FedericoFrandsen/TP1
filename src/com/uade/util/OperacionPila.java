@@ -12,74 +12,74 @@ public class OperacionPila {
     //e) Sumar los elementos de una Pila
     //f) Calcular el promedio de los elementos de una Pila
 
-    public void pasarPila(PilaTDA pila1,PilaTDA pila2 ){
-            while (!pila1.pilaVacia()){
-                pila2.apilar(pila1.tope());
-                pila1.desapilar();
+    public void pasarPila(PilaTDA pilaOrigen, PilaTDA pilaDestino){
+            while (!pilaOrigen.pilaVacia()){
+                pilaDestino.apilar(pilaOrigen.tope());
+                pilaOrigen.desapilar();
             }
     }
-    public void copiarPila(PilaTDA pila1,PilaTDA pila2 ){
+    public void copiarPila(PilaTDA pilaOrigen, PilaTDA pilaDestino){
         PilaTDA aux = new PilaTDAImpl();
         aux.inicializarPila();
 
-        while (!pila1.pilaVacia()){
-            aux.apilar(pila1.tope());
-            pila1.desapilar();
+        while (!pilaOrigen.pilaVacia()){
+            aux.apilar(pilaOrigen.tope());
+            pilaOrigen.desapilar();
         }
         while (!aux.pilaVacia()){
-            pila2.apilar(aux.tope());
-            pila1.apilar(aux.tope());
+            pilaDestino.apilar(aux.tope());
+            pilaOrigen.apilar(aux.tope());
             aux.desapilar();
 
         }
     }
-    public void invertirPila(PilaTDA pila1){
+    public void invertirPila(PilaTDA pilaOrigen){
         PilaTDA aux = new PilaTDAImpl();
         PilaTDA aux2 = new PilaTDAImpl();
         aux.inicializarPila();
         aux2.inicializarPila();
 
-        while (!pila1.pilaVacia()){
-            aux.apilar(pila1.tope());
-            pila1.desapilar();
+        while (!pilaOrigen.pilaVacia()){
+            aux.apilar(pilaOrigen.tope());
+            pilaOrigen.desapilar();
         }
         while (!aux.pilaVacia()){
             aux2.apilar(aux.tope());
             aux.desapilar();
         }
         while (!aux2.pilaVacia()){
-            pila1.apilar(aux2.tope());
+            pilaOrigen.apilar(aux2.tope());
             aux2.desapilar();
         }
     }
-    public int contarElementos(PilaTDA pila1){
+    public int contarElementos(PilaTDA pilaOrigen){
         int contador = 0;
         PilaTDA aux = new PilaTDAImpl();
         aux.inicializarPila();
 
-        while (!pila1.pilaVacia()){
-            aux.apilar(pila1.tope());
-            pila1.desapilar();
+        while (!pilaOrigen.pilaVacia()){
+            aux.apilar(pilaOrigen.tope());
+            pilaOrigen.desapilar();
             contador++;
         }
         while (!aux.pilaVacia()){
-            pila1.apilar(aux.tope());
+            pilaOrigen.apilar(aux.tope());
             aux.desapilar();
         }
         return contador;
     }
-    public int sumarElementos(PilaTDA pila1){
+    public int sumarElementos(PilaTDA pilaOrigen){
        int suma = 0;
-       while (!pila1.pilaVacia()){
-           suma = suma + pila1.tope();  // ¿¿ Es lo mismo si uso cantidad += pila1.tope(); ??
-           pila1.desapilar();
+       while (!pilaOrigen.pilaVacia()){
+           suma = suma + pilaOrigen.tope();  // ¿¿ Es lo mismo si uso cantidad += pila1.tope(); ??
+           pilaOrigen.desapilar();
        }
        return suma;
     }
-    public int promedioElementos(PilaTDA pila1){
+    public int promedioElementos(PilaTDA pilaOrigen){
         PilaTDA aux = new PilaTDAImpl();
         aux.inicializarPila();
-        copiarPila(pila1,aux);
+        copiarPila(pilaOrigen,aux);
 
         int suma = sumarElementos(aux);
         int contador = contarElementos(aux);
