@@ -1,6 +1,7 @@
 package com.uade.app;
 
 import com.uade.api.PilaTDA;
+import com.uade.impl.PilaTDADinamicaImpl;
 import com.uade.impl.PilaTDAImpl;
 import com.uade.util.OperacionPila;
 
@@ -10,8 +11,9 @@ public class exe {
     public static void main(String[] args) {
         exe ex = new exe();
         ex.execute();
+        ex.execute2();
     }
-    public void execute() {
+    private void execute() {
         PilaTDA pila1 = new PilaTDAImpl();
         PilaTDA pila2 = new PilaTDAImpl();
 
@@ -22,12 +24,32 @@ public class exe {
         Scanner sc = new Scanner(System.in);
         op.llenarPila(pila1, sc , "pilaOrigen");
         sc.close();
+
         prueba1(pila1,pila2, sc ,op);
         prueba2(pila2,pila1, sc ,op);
         prueba3(pila1, sc , op);
         prueba4(pila1, sc , op);
         prueba5(pila1, sc , op);
         prueba6(pila1, sc , op);
+
+    }
+    private void execute2(){
+        PilaTDA pila1Dinamica = new PilaTDADinamicaImpl();
+        PilaTDA pila2Dinamica = new PilaTDADinamicaImpl();
+        pila1Dinamica.inicializarPila();
+        pila2Dinamica.inicializarPila();
+        OperacionPila op = new OperacionPila();
+        Scanner sc = new Scanner(System.in);
+        op.llenarPila(pila1Dinamica, sc , "pilaOrigenDinamica");
+        sc.close();
+
+        prueba1(pila1Dinamica,pila2Dinamica,sc ,op);
+        prueba2(pila2Dinamica,pila1Dinamica,sc ,op);
+        prueba3(pila1Dinamica, sc , op);
+        prueba4(pila1Dinamica, sc , op);
+        prueba5(pila1Dinamica, sc , op);
+        prueba6(pila1Dinamica, sc , op);
+
     }
 
     private void prueba1(PilaTDA pila1,PilaTDA pila2, Scanner sc, OperacionPila op) {
