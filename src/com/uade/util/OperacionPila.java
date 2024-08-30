@@ -3,6 +3,8 @@ package com.uade.util;
 import com.uade.api.PilaTDA;
 import com.uade.impl.PilaTDAImpl;
 
+import java.util.Scanner;
+
 public class OperacionPila {
 
     //a) Pasar una Pila a otra (dejándola en orden inverso)
@@ -90,5 +92,28 @@ public class OperacionPila {
         }
         else { System.out.println("No se puede calcular el promedio"); }
         return promedio;
+    }
+    public void  llenarPila(PilaTDA pila, Scanner scanner, String nombre) {
+        System.out.println("Ingrese la cantidad de elmentos para la pila " + nombre + ":");
+        int n = scanner.nextInt();
+
+        System.out.println("Ingrese los elementos de la pila " + nombre +  ":");
+        for (int i = 0; i < n; i++) {
+            int elemento = scanner.nextInt();
+            pila.apilar(elemento);
+        }
+
+    }
+    public void mostrarPila(PilaTDA pila) {
+        PilaTDA aux = new PilaTDAImpl();
+        while (!pila.pilaVacia()){
+            System.out.println(pila.tope());
+            aux.apilar(pila.tope());
+            pila.desapilar();
+        }
+        while (!aux.pilaVacia()){
+            pila.apilar(aux.tope());
+            aux.desapilar();
+        }
     }
 }
