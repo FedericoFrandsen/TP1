@@ -12,6 +12,7 @@ package com.uade.util;
 
 import com.uade.api.ColaTDA;
 import com.uade.api.PilaTDA;
+import com.uade.impl.ColaTDAImpl;
 import com.uade.impl.PilaTDAImpl;
 
 public class OperacionCola {
@@ -34,5 +35,85 @@ public class OperacionCola {
         aux.desapilar();
         }
     }
-    
+    public void invertirColaRecu(ColaTDA colaOrigen){
+
+        if (!colaOrigen.colaVacia()) {
+            int frente = colaOrigen.primero();
+            colaOrigen.desacolar();
+            invertirColaRecu(colaOrigen);
+            colaOrigen.acolar(frente);
+        }
+    }
+
+    public void copiarCola(ColaTDA colaOrigen, ColaTDA colaDestino){
+        ColaTDA aux = new ColaTDAImpl();
+        aux.inicializarCola();
+
+        while (!colaOrigen.colaVacia()){
+            aux.acolar(colaOrigen.primero());
+            colaOrigen.desacolar();
+        }
+        while (!aux.colaVacia()){
+            colaDestino.acolar(aux.primero());
+            colaOrigen.acolar(aux.primero());
+            aux.desacolar();
+
+        }
+    }
+    public void contiene(ColaTDA colaOrigen, ColaTDA colaDestino){
+        ColaTDA aux = new ColaTDAImpl();
+        aux.inicializarCola();
+        invertirColaRecu(colaOrigen);
+        int ultimo = colaOrigen.primero();
+        invertirCola(colaOrigen);
+        copiarCola(colaDestino, aux);
+        int contador = 0;
+        while (!colaDestino.colaVacia()){
+            if (ultimo == colaDestino.primero()){
+                System.out.println("El ultimo de C1 esta contenido en C2 y es:" + colaDestino.primero());
+                colaDestino.desacolar();
+                contador++;
+            } else { colaDestino.desacolar(); }
+        }
+        if (contador==0){
+            System.out.println("el ultimo elemento de C1 no esta contenido en c2");
+        }
+        copiarCola(aux,colaDestino);
+    }
+
+    public boolean esCapicua(ColaTDA colaOrigen){
+        PilaTDA pila = new PilaTDAImpl();
+        pila.inicializarPila();
+        ColaTDA aux = new ColaTDAImpl();
+        aux.inicializarCola();
+        copiarCola(colaOrigen,aux);
+        while (!aux.colaVacia() && !pila.pilaVacia()){
+            if (aux.primero() != pila.tope()){
+                return false;
+            }
+            aux.desacolar();
+            pila.desapilar();
+        }
+        return true;
+        // no me termina de cerrar el ciclo, cuando este vacia siempre va a retornar el true, sea o no capicua?
+    }
+
+    public boolean esInversa(ColaTDA colaOrigen, ColaTDA colaDestino){
+        ColaTDA aux = new ColaTDAImpl();
+        aux.inicializarCola();
+        copiarCola(colaOrigen,aux);
+        invertirColaRecu(colaOrigen);
+        while (!aux.colaVacia()){
+
+            if (colaOrigen.primero() == colaDestino.primero()){
+                colaDestino.desacolar();
+                colaOrigen.desacolar();
+                return true;
+            } else {
+                return false;
+                }
+         }
+
+
+    }
 }
