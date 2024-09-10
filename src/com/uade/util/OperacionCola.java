@@ -99,21 +99,23 @@ public class OperacionCola {
     }
 
     public boolean esInversa(ColaTDA colaOrigen, ColaTDA colaDestino){
-        ColaTDA aux = new ColaTDAImpl();
-        aux.inicializarCola();
-        copiarCola(colaOrigen,aux);
-        invertirColaRecu(colaOrigen);
-        while (!aux.colaVacia()){
-
-            if (colaOrigen.primero() == colaDestino.primero()){
-                colaDestino.desacolar();
-                colaOrigen.desacolar();
-                return true;
-            } else {
+        ColaTDA auxOrigen = new ColaTDAImpl();
+        ColaTDA auxDestino = new ColaTDAImpl();
+        auxOrigen.inicializarCola();
+        auxDestino.inicializarCola();
+        copiarCola(colaOrigen, auxOrigen);
+        copiarCola(colaDestino,auxDestino);
+        invertirColaRecu(auxOrigen);
+        while (!auxOrigen.colaVacia()){
+            if (auxOrigen.primero() != auxDestino.primero()){
                 return false;
-                }
+            }
+            auxDestino.desacolar();
+            auxOrigen.desacolar();
          }
-
+        return true;
+        //aplica la misma duda que al anterior, una vez que se retorna el folse se corta el ciclo
+        // o sigue y cuando las colas estan vacias se retorna el true?
 
     }
 }
