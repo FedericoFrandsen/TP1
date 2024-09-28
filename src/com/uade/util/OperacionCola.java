@@ -16,6 +16,7 @@ import com.uade.impl.ColaTDAImpl;
 import com.uade.impl.PilaTDAImpl;
 
 public class OperacionCola {
+
     public void pasarCola(ColaTDA colaOrigen, ColaTDA colaDestino){
         while (!colaOrigen.colaVacia()){
             colaDestino.acolar(colaOrigen.primero());
