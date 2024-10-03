@@ -7,6 +7,16 @@ import com.uade.util.OperacionPila;
 
 import java.util.Scanner;
 
+//7) Escribir al menos dos implementaciones distintas (basadas en arreglos) del TDA Pila
+//definido en 1). Comparar los costos de cada una de las operaciones.
+
+//8) Escribir al menos dos implementaciones distintas (basadas en arreglos) del TDA Cola
+//definido en 3). Comparar los costos de cada una de las operaciones.
+
+//9) Escribir al menos dos implementaciones distintas (basadas en arreglos) del TDA Cola con
+//prioridades definido en 5). Comparar los costos de cada una de las operaciones
+
+
 public class Lanzador {
     public static void main(String[] args) {
         Lanzador ex = new Lanzador();
@@ -51,6 +61,8 @@ public class Lanzador {
         prueba6(pila1Dinamica, sc , op);
 
     }
+
+
 
     private void prueba1(PilaTDA pila1,PilaTDA pila2, Scanner sc, OperacionPila op) {
         op.pasarPila(pila1, pila2);
