@@ -1,6 +1,13 @@
 package com.uade.impl;
 import com.uade.api.ColaTDA;
 
+// Insertar un elemento en la cola es una operacion de acceso simple O(1)
+// Para desacolar, todos los elementos deben moverse una posición hacia la izquierda, lo que implica recorrer el arreglo
+// y por ende el costo es O(n), donde n es el numero de elementos de la cola
+//  Primero es una operacion constante, por lo que el costo es O(1)
+// ColaVacia compara la longitud de la cola con cero, por lo que es constante y su costo es O(1)
+
+
 public class ColaTDAImpl implements ColaTDA {
 
     private int longitud;
@@ -18,7 +25,6 @@ public class ColaTDAImpl implements ColaTDA {
             longitud++;
         }
     }
-    // Insertar un elemento en la cola es una operacion de acceso simple O(1)
 
     @Override
     public void desacolar() {
@@ -29,18 +35,17 @@ public class ColaTDAImpl implements ColaTDA {
             longitud--;
         }
     }
-    // Para desacolar, todos los elementos deben moverse una posición hacia la izquierda, lo que implica recorrer el arreglo
-    // y por ende el costo es O(n), donde n es el numero de elementos de la cola
+
 
     @Override
     public int primero() {
         return elementos[0];
     }
-    // es una operacion constante, por lo que el costo es O(1)
+
 
     @Override
     public boolean colaVacia() {
         return longitud==0;
     }
-    // compara la longitud de la cola con cero, por lo que es constante y su costo es O(1)
+
 }

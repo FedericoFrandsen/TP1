@@ -87,18 +87,17 @@ public class Lanzador {
     }
     private void  prueba4(PilaTDA pila1, Scanner sc, OperacionPila op){
         int contar = op.contarElementos(pila1);
-        op.contarElementos(pila1);
+
         System.out.println("La cantidad de elementos de la pila es: "  +  contar);
     }
     private void prueba5(PilaTDA pila1, Scanner sc, OperacionPila op){
         int sumar = op.sumarElementos(pila1);
-        op.sumarElementos(pila1);
+
         System.out.println("La suma de los elemetos de la pila es:" + sumar);
     }
     private void prueba6(PilaTDA pila1, Scanner sc, OperacionPila op){
         int promedio = op.promedioElementos(pila1);
-        op.promedioElementos(pila1);
+
         System.out.println("La media de los elementos de la pila es:" + promedio);
     }
 }
-//  en las pruebas 4,5 y 6 es necesaria volver a llamar a la operacion luego de ya habersela asignado a un elemento int? (siento que es redundante)
