@@ -1,6 +1,14 @@
 package com.uade.impl;
 import org.uade.api.ColaPrioridadTDA;
 
+
+//AcolarPrioridad: O(n) – En el peor de los casos, si el elemento tiene la prioridad más baja, se desplazan todos los elementos en el arreglo para insertar el nuevo elemento en su lugar correcto.
+//Desacolar: O(1) – Desacolar solo implica mover el índice, lo que toma tiempo constante.
+//Primero: O(1) – Acceder al primer elemento en el arreglo toma tiempo constante.
+//ColaVacia: O(1) – Comparar el índice con 0 es una operación constante.
+//Prioridad: O(1) – Retornar la prioridad del primer elemento también es una operación constante.
+
+
 public class ColaPrioridadTDAImpl implements ColaPrioridadTDA {
    private class Elemento {
          int valor;
