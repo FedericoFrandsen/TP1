@@ -1,14 +1,7 @@
 package com.uade.impl;
-import org.uade.api.ConjuntoTDA
+import  org.uade.api.ConjuntoTDA;
 
-// restricciones:
-
-//a) Tamaño máximo acotado
-//b) Tamaño máximo no acotado
-//c) Universo acotado. Considerar por ejemplo el Universo de los números enteros
-//entre 0 y N
-
-public class ConjuntosTDAImpl implements ConjuntoTDA {
+public class ConjuntoUniversoAcotadoTDAImpl implements ConjuntoTDA {
     @Override
     public void inicializarConjunto() {
 
