@@ -1,6 +1,10 @@
 package com.uade.impl;
 import  org.uade.api.ConjuntoTDA;
 
+
+//c) Universo acotado. Considerar por ejemplo el Universo de los números enteros entre 0 y N
+
+
 public class ConjuntoUniversoAcotadoTDAImpl implements ConjuntoTDA {
     @Override
     public void inicializarConjunto() {

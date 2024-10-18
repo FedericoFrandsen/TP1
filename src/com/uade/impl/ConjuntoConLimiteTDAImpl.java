@@ -1,9 +1,8 @@
 package com.uade.impl;
 import org.uade.api.ConjuntoTDA;
-
 import java.util.Random;
 
-//Tamaño máximo acotado
+
 
 public class ConjuntoConLimiteTDAImpl implements ConjuntoTDA {
 
