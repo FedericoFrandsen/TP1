@@ -2,9 +2,28 @@ package com.uade.impl;
 import org.uade.api.ConjuntoTDA;
 
 import java.util.Random;
-
-
 //b) Tamaño máximo no acotado
+
+
+//InicializarConjunto: Solo se asigna null al puntero inicio.
+//Coste: O(1)
+
+//Agregar: Se debe verificar si el elemento ya existe en el conjunto (operación O(n)). Si no está, agregar el elemento en la cabeza de la lista es O(1).
+//Coste: O(n)
+
+//Elegir (elegir):Se debe contar los elementos (O(n)) y luego recorrer la lista hasta el índice aleatorio (también O(n)).
+//Coste: O(n)
+
+//Sacar (sacar): En el peor caso, se debe recorrer toda la lista para encontrar el valor a eliminar.
+//Coste:O(n)
+
+//Pertenecer (pertenece): Se debe recorrer toda la lista para verificar si el elemento está en el conjunto.
+//Coste:O(n)
+
+//Conjunto vacío (conjuntoVacio): Solo se verifica si inicio es null.
+//Coste:O(1)
+
+
 
 
 public class ConjuntoSinLimiteTDAImpl implements ConjuntoTDA {
@@ -15,6 +34,8 @@ public class ConjuntoSinLimiteTDAImpl implements ConjuntoTDA {
         NodoConjunto siguiente;
     }
     private NodoConjunto inicio;
+
+
 
     @Override
     public void inicializarConjunto() {
