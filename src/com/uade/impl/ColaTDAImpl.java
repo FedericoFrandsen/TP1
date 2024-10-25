@@ -1,11 +1,18 @@
 package com.uade.impl;
 import com.uade.api.ColaTDA;
 
-// Insertar un elemento en la cola es una operacion de acceso simple O(1)
-// Para desacolar, todos los elementos deben moverse una posición hacia la izquierda, lo que implica recorrer el arreglo
-// y por ende el costo es O(n), donde n es el numero de elementos de la cola
-//  Primero es una operacion constante, por lo que el costo es O(1)
-// ColaVacia compara la indiced de la cola con cero, por lo que es constante y su costo es O(1)
+// Insertar: Insertar un elemento en la cola es una operación de acceso simple.
+// Coste: O(1)
+
+// Desacolar: Todos los elementos deben moverse una posición hacia la izquierda, lo que implica recorrer el arreglo.
+// Coste: O(n), donde n es el número de elementos en la cola.
+
+// Primero: Es una operación constante, ya que simplemente se accede al primer elemento.
+// Coste: O(1)
+
+// ColaVacia: Compara el índice de la cola con cero, lo que es una operación constante.
+// Coste: O(1)
+
 
 
 public class ColaTDAImpl implements ColaTDA {

@@ -1,4 +1,4 @@
-package org.uade.api;
+package com.uade.api;
 
 public interface ConjuntoTDA {
     void inicializarConjunto();

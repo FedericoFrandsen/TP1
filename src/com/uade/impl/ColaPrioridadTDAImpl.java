@@ -1,5 +1,5 @@
 package com.uade.impl;
-import org.uade.api.ColaPrioridadTDA;
+import com.uade.api.ColaPrioridadTDA;
 
 
 //AcolarPrioridad: O(n) – En el peor de los casos, si el elemento tiene la prioridad más baja, se desplazan todos los elementos en el arreglo para insertar el nuevo elemento en su lugar correcto.

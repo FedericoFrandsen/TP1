@@ -1,5 +1,5 @@
 package com.uade.impl;
-import org.uade.api.ConjuntoTDA;
+import com.uade.api.ConjuntoTDA;
 import java.util.Random;
 
 //InicializarConjunto: la operación asigna un valor inicial al arreglo y a la variable cantidad. La creación del arreglo también es O(1) ya que el tamaño del arreglo es constante (100).
