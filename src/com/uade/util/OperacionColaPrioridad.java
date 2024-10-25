@@ -1,7 +1,7 @@
 package com.uade.util;
 import com.uade.impl.ColaPrioridadTDAImpl;
-import org.uade.api.ColaPrioridadTDA;
-import org.uade.api.ColaPrioridadTDA;
+import com.uade.api.ColaPrioridadTDA;
+import com.uade.api.ColaPrioridadTDA;
 
 //5) Definir el TDA Cola con prioridades, listando las operaciones asociadas y establecer sus
 //precondiciones.
