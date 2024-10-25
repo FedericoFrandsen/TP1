@@ -5,7 +5,7 @@ import com.uade.api.ColaPrioridadTDA;
 
 //5) Definir el TDA Cola con prioridades, listando las operaciones asociadas y establecer sus
 //precondiciones.
-//6) A partir del TDA Cola con prioridades definido, escribir un método que permita
+//6) A partir del TDA Cola con prioridades definido, escribir un métod que permita
 
 //a) Combinar dos colas con prioridades CP1 y CP2, generando una nueva
 //cola con prioridades. Considerar que a igual prioridad, los elementos de la CP1

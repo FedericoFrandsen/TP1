@@ -1,7 +1,7 @@
 package com.uade.impl;
 import com.uade.api.ColaTDA;
 
-// Insertar: Insertar un elemento en la cola es una operación de acceso simple.
+// Acolar: Insertar un elemento en la cola es una operación de acceso simple.
 // Coste: O(1)
 
 // Desacolar: Todos los elementos deben moverse una posición hacia la izquierda, lo que implica recorrer el arreglo.
