@@ -23,7 +23,8 @@ public class ColaTDAImpl implements ColaTDA {
 
     @Override
     public void inicializarCola() {
-    indice = 0;
+        elementos = new int[100];
+        indice = 0;
     }
 
     @Override

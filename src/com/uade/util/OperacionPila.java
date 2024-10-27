@@ -106,6 +106,7 @@ public class OperacionPila {
     }
     public void mostrarPila(PilaTDA pila) {
         PilaTDA aux = new PilaTDAImpl();
+        aux.inicializarPila();
         while (!pila.pilaVacia()){
             System.out.println(pila.tope());
             aux.apilar(pila.tope());

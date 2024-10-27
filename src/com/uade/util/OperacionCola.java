@@ -15,8 +15,36 @@ import com.uade.api.PilaTDA;
 import com.uade.impl.ColaTDAImpl;
 import com.uade.impl.PilaTDAImpl;
 
+import java.util.Scanner;
+
 public class OperacionCola {
 
+    public void llenarCola(ColaTDA cola, Scanner sc) {
+
+        System.out.println("ingresar cantidad de elementos:");
+        int elemento= sc.nextInt();
+
+        for (int i = 0; i < elemento; i++) {
+            System.out.println("ingresar elemento:");
+            int valor = sc.nextInt();
+            cola.acolar(valor);
+        }
+
+    }
+    public void mostrarCola(ColaTDA cola) {
+        ColaTDA aux= new ColaTDAImpl();
+        aux.inicializarCola();
+
+        while(!cola.colaVacia()) {
+            System.out.println(cola.primero());
+            aux.acolar(cola.primero());
+            cola.desacolar();
+        }
+        while(!aux.colaVacia()) {
+            cola.acolar(aux.primero());
+            aux.desacolar();
+        }
+    }
     public void pasarCola(ColaTDA colaOrigen, ColaTDA colaDestino){
         while (!colaOrigen.colaVacia()){
             colaDestino.acolar(colaOrigen.primero());

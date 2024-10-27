@@ -1,5 +1,5 @@
 package com.uade.impl;
-import  org.uade.api.ConjuntoTDA;
+import  com.uade.api.ConjuntoTDA;
 
 import java.util.Random;
 

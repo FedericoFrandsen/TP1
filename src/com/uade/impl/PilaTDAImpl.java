@@ -17,6 +17,7 @@ public class PilaTDAImpl implements PilaTDA {
 
     @Override
     public void inicializarPila() {
+        elementos = new int[100];
         tope=0;
     }
 
@@ -31,7 +32,7 @@ public class PilaTDAImpl implements PilaTDA {
     @Override
     public void desapilar() {
         if (!pilaVacia()) {
-            tope--; //
+            tope--;
         }
     }
 

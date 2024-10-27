@@ -1,5 +1,5 @@
 package com.uade.impl;
-import org.uade.api.ColaPrioridadTDA;
+import com.uade.api.ColaPrioridadTDA;
 
 //AcolarPrioridad: O(n) – En el peor de los casos, necesitarás recorrer toda la lista enlazada para encontrar la posición correcta del nuevo nodo.
 //Desacolar: O(1) – Desacolar implica eliminar el primer nodo, lo que toma tiempo constante.
