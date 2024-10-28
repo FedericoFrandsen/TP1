@@ -20,7 +20,8 @@ public class ColaPrioridadTDAImpl implements ColaPrioridadTDA {
 
     @Override
     public void inicializarCola() {
-    indice = 0;
+        elementos = new Elemento[100];
+        indice = 0;
     }
 
     @Override

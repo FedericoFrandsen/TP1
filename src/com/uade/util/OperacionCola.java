@@ -1,15 +1,5 @@
 package com.uade.util;
 
-//4) A partir del TDA Cola definido, escribir distintos métodos que permitan
-//a) Pasar una Cola a otra
-//b) Invertir el contenido de una Cola (pueden usarse Pilas auxiliares)
-//c) Invertir el contenido de una Cola (NO pueden usarse Pilas auxiliares)
-//d) Determinar si el final de la Cola C1 coincide o no con la Cola C2.
-//e) Determinar si una Cola es capicúa o no. Para ser capicúa debe cumplir
-//que el primer elemento es igual al último, el segundo igual al penúltimo, etc.
-//f) Determinar si la Cola C1 es la inversa de la Cola C2. Dos Colas serán
-//inversas, si tienen los mismos elementos pero en orden inverso
-
 import com.uade.api.ColaTDA;
 import com.uade.api.PilaTDA;
 import com.uade.impl.ColaTDAImpl;
@@ -19,32 +9,6 @@ import java.util.Scanner;
 
 public class OperacionCola {
 
-    public void llenarCola(ColaTDA cola, Scanner sc) {
-
-        System.out.println("ingresar cantidad de elementos:");
-        int elemento= sc.nextInt();
-
-        for (int i = 0; i < elemento; i++) {
-            System.out.println("ingresar elemento:");
-            int valor = sc.nextInt();
-            cola.acolar(valor);
-        }
-
-    }
-    public void mostrarCola(ColaTDA cola) {
-        ColaTDA aux= new ColaTDAImpl();
-        aux.inicializarCola();
-
-        while(!cola.colaVacia()) {
-            System.out.println(cola.primero());
-            aux.acolar(cola.primero());
-            cola.desacolar();
-        }
-        while(!aux.colaVacia()) {
-            cola.acolar(aux.primero());
-            aux.desacolar();
-        }
-    }
     public void pasarCola(ColaTDA colaOrigen, ColaTDA colaDestino){
         while (!colaOrigen.colaVacia()){
             colaDestino.acolar(colaOrigen.primero());
@@ -124,7 +88,7 @@ public class OperacionCola {
             pila.desapilar();
         }
         return true;
-        // no me termina de cerrar el ciclo, cuando este vacia siempre va a retornar el true, sea o no capicua?
+
     }
 
     public boolean esInversa(ColaTDA colaOrigen, ColaTDA colaDestino){
@@ -143,8 +107,32 @@ public class OperacionCola {
             auxOrigen.desacolar();
          }
         return true;
-        //aplica la misma duda que al anterior, una vez que se retorna el folse se corta el ciclo
-        // o sigue y cuando las colas estan vacias se retorna el true?
+    }
 
+    public void llenarCola(ColaTDA cola, Scanner sc) {
+
+        System.out.println("ingresar cantidad de elementos:");
+        int elemento= sc.nextInt();
+
+        for (int i = 0; i < elemento; i++) {
+            System.out.println("ingresar elemento:");
+            int valor = sc.nextInt();
+            cola.acolar(valor);
+        }
+
+    }
+    public void mostrarCola(ColaTDA cola) {
+        ColaTDA aux= new ColaTDAImpl();
+        aux.inicializarCola();
+
+        while(!cola.colaVacia()) {
+            System.out.println(cola.primero());
+            aux.acolar(cola.primero());
+            cola.desacolar();
+        }
+        while(!aux.colaVacia()) {
+            cola.acolar(aux.primero());
+            aux.desacolar();
+        }
     }
 }

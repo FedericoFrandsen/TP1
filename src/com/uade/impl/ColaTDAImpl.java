@@ -14,7 +14,6 @@ import com.uade.api.ColaTDA;
 // Coste: O(1)
 
 
-
 public class ColaTDAImpl implements ColaTDA {
 
 
