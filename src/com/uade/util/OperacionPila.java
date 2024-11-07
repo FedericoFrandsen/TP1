@@ -1,6 +1,8 @@
 package com.uade.util;
 
+import com.uade.api.ConjuntoTDA;
 import com.uade.api.PilaTDA;
+import com.uade.impl.ConjuntoConLimiteTDAImpl;
 import com.uade.impl.PilaTDAImpl;
 
 import java.util.Scanner;
@@ -116,5 +118,77 @@ public class OperacionPila {
             pila.apilar(aux.tope());
             aux.desapilar();
         }
+    }
+    public boolean esCapicua(PilaTDA pila){
+
+        PilaTDA aux = new PilaTDAImpl();
+        aux.inicializarPila();
+        PilaTDA copiaPila = new PilaTDAImpl();
+        copiaPila.inicializarPila();
+
+        copiarPila(pila,copiaPila);
+        copiarPila(pila,aux);
+        invertirPila(copiaPila);
+
+        while(!copiaPila.pilaVacia()){
+            if (copiaPila.tope()!=aux.tope()){
+                return false;
+            } else {
+                copiaPila.desapilar();
+                aux.desapilar();
+            }
+        }
+        return true;
+    }
+
+    public void eliminarRepetidos(PilaTDA pila){
+        PilaTDA aux = new PilaTDAImpl();
+        aux.inicializarPila();
+        invertirPila(pila);
+
+        while (!pila.pilaVacia()){
+            int valor= pila.tope();
+            pila.desapilar();
+            if (valor != pila.tope()){
+                aux.apilar(valor);
+            }
+        }
+        copiarPila(aux,pila);
+    }
+
+    //c) Repartir una Pila P en dos mitades M1 y M2 de elementos consecutivos,
+    //respetando el orden. Asumir que la Pila P contiene un número par de elementos.
+
+    public void repartirPila(PilaTDA pilaOriginal, PilaTDA m1, PilaTDA m2){
+        boolean turno = true;
+        while(!pilaOriginal.pilaVacia()) {
+            if (turno) {
+                m1.apilar(pilaOriginal.tope());
+            }
+            else {
+                m2.apilar(pilaOriginal.tope());
+            }
+            pilaOriginal.desapilar();
+            turno =!turno;
+        }
+    }
+    //d) Generar el conjunto de elementos que se repiten en una Pila.
+    public ConjuntoTDA elementosRepetidos(PilaTDA pila){
+        PilaTDA aux = new PilaTDAImpl();
+        aux.inicializarPila();
+        ConjuntoTDA repetidos = new ConjuntoConLimiteTDAImpl();
+        repetidos.inicializarConjunto();
+        copiarPila(pila,aux);
+
+
+        while (!pila.pilaVacia()){
+            int valor= pila.tope();
+            pila.desapilar();
+            if (valor == pila.tope()){
+                repetidos.agregar(valor);
+            }
+        }
+        copiarPila(aux,pila);
+        return repetidos;
     }
 }

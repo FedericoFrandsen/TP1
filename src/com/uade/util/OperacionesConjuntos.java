@@ -113,4 +113,36 @@ public class OperacionesConjuntos {
 
     return dife;
     }
+    public ConjuntoTDA diferenciaSimetrica(ConjuntoTDA conjunto1, ConjuntoTDA conjunto2){
+
+        ConjuntoTDA difSimetrica = new ConjuntoConLimiteTDAImpl();
+        difSimetrica.inicializarConjunto();
+        ConjuntoTDA aux = new ConjuntoConLimiteTDAImpl();
+        aux.inicializarConjunto();
+        ConjuntoTDA aux2 = new ConjuntoConLimiteTDAImpl();
+        aux2.inicializarConjunto();
+        copiarConjunto(conjunto1,aux);
+        copiarConjunto(conjunto2,aux2);
+
+        while (!conjunto1.conjuntoVacio()){
+            int elemento = conjunto1.elegir();
+            conjunto1.sacar(elemento);
+            if (!conjunto2.pertenece(elemento)){
+                difSimetrica.agregar(elemento);
+            }
+        }
+        while (!conjunto2.conjuntoVacio()){
+            int elemento = conjunto2.elegir();
+            conjunto2.sacar(elemento);
+            if(!conjunto1.pertenece(elemento)){
+                difSimetrica.agregar(elemento);
+            }
+        }
+        copiarConjunto(aux,conjunto1);
+        copiarConjunto(aux2, conjunto2);
+        return difSimetrica;
+    }
+    public void copiarConjunto(ConjuntoTDA conjunto1, ConjuntoTDA conjunto2) {
+
+    }
 }

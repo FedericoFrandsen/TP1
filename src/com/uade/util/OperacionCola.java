@@ -1,8 +1,10 @@
 package com.uade.util;
 
 import com.uade.api.ColaTDA;
+import com.uade.api.ConjuntoTDA;
 import com.uade.api.PilaTDA;
 import com.uade.impl.ColaTDAImpl;
+import com.uade.impl.ConjuntoConLimiteTDAImpl;
 import com.uade.impl.PilaTDAImpl;
 
 import java.util.Scanner;
@@ -134,5 +136,50 @@ public class OperacionCola {
             cola.acolar(aux.primero());
             aux.desacolar();
         }
+    }
+    public void eliminarRepetidos(ColaTDA cola) {
+        ColaTDA aux = new ColaTDAImpl();
+        aux.inicializarCola();
+
+        while (!cola.colaVacia()) {
+            int valor = cola.primero();
+            cola.desacolar();
+            if (valor != cola.primero()) {
+                aux.acolar(valor);
+            }
+        }
+        copiarCola(aux, cola);
+    }
+
+    private void repartirCola(PilaTDA cola, PilaTDA m1, PilaTDA m2) {
+        boolean turno = true;
+        while (!cola.pilaVacia()) {
+            if (turno) {
+                m1.apilar(cola.tope());
+            } else {
+                m2.apilar(cola.tope());
+            }
+            cola.desapilar();
+            turno = !turno;
+        }
+    }
+
+    public ConjuntoTDA elementosRepetidos(ColaTDA cola){
+        ColaTDA aux = new ColaTDAImpl();
+        aux.inicializarCola();
+        copiarCola(cola,aux);
+        ConjuntoTDA repetidos = new ConjuntoConLimiteTDAImpl();
+        repetidos.inicializarConjunto();
+
+        while (!cola.colaVacia()) {
+            int valor = cola.primero();
+            cola.desacolar();
+
+            if (valor == cola.primero()) {
+                repetidos.agregar(valor);
+            }
+        }
+        copiarCola(aux, cola);
+        return repetidos;
     }
 }
