@@ -1,7 +1,10 @@
 package com.uade.util;
+import com.uade.api.DiccionarioMultipleTDA;
+import com.uade.api.DiccionarioSimpleTDA;
 import com.uade.impl.ColaPrioridadTDAImpl;
 import com.uade.api.ColaPrioridadTDA;
 import com.uade.api.ColaPrioridadTDA;
+import com.uade.impl.DiccionarioMultipleTDAImpl;
 
 public class OperacionColaPrioridad {
         //si quisiera que no se borren las colas originales tendria que hacer unos arreglos agregando colas aux y trabajando sobre ellas.
@@ -78,5 +81,21 @@ public class OperacionColaPrioridad {
 
         }
 
+        public DiccionarioMultipleTDA recuperarPrioridades (ColaPrioridadTDA colaPrioridad) {
+            DiccionarioMultipleTDA recuperado = new DiccionarioMultipleTDAImpl();
+            recuperado.inicializarDiccionario();
+            ColaPrioridadTDA colaPrioridadAux = new ColaPrioridadTDAImpl();
+            colaPrioridadAux.inicializarCola();
+            copiarCola(colaPrioridad,colaPrioridadAux);
+
+            while (!colaPrioridad.colaVacia()){
+                int prioridad = colaPrioridad.prioridad();
+                int valor = colaPrioridad.primero();
+                colaPrioridad.desacolar();
+                recuperado.agregar(prioridad, valor);
+            }
+            copiarCola(colaPrioridadAux,colaPrioridad);
+            return recuperado;
+        }
 
 }

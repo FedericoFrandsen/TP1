@@ -143,6 +143,19 @@ public class OperacionesConjuntos {
         return difSimetrica;
     }
     public void copiarConjunto(ConjuntoTDA conjunto1, ConjuntoTDA conjunto2) {
+        ConjuntoTDA aux = new ConjuntoConLimiteTDAImpl();
+        aux.inicializarConjunto();
 
+        while (!conjunto1.conjuntoVacio()){
+            int elemento = conjunto1.elegir();
+            conjunto1.sacar(elemento);
+            conjunto2.agregar(elemento);
+            aux.agregar(elemento);
+        }
+        while (!aux.conjuntoVacio()){
+            int elemento = aux.elegir();
+            conjunto1.agregar(elemento);
+            aux.sacar(elemento);
+        }
     }
 }
