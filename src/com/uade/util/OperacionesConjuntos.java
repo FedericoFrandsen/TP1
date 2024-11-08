@@ -1,7 +1,11 @@
 package com.uade.util;
 
+import com.uade.api.ColaTDA;
 import com.uade.api.ConjuntoTDA;
+import com.uade.api.PilaTDA;
+import com.uade.impl.ColaTDAImpl;
 import com.uade.impl.ConjuntoConLimiteTDAImpl;
+import com.uade.impl.PilaTDAImpl;
 
 public class OperacionesConjuntos {
 
@@ -158,4 +162,106 @@ public class OperacionesConjuntos {
             aux.sacar(elemento);
         }
     }
+
+    public ConjuntoTDA diferenciaSimetrica2(ConjuntoTDA conjunto1, ConjuntoTDA conjunto2){
+        ConjuntoTDA aDifB = diferenciaConjunto(conjunto1,conjunto2);
+        ConjuntoTDA bDifA = diferenciaConjunto(conjunto1,conjunto2);
+        ConjuntoTDA dif = unionConjunto(aDifB,bDifA);
+        return dif;
+}
+
+    public boolean sonIguales(ConjuntoTDA conjunto1, ConjuntoTDA conjunto2){
+
+        ConjuntoTDA inter = interseccionConjunto(conjunto1,conjunto2);
+        int cantidadElementos1 = contarElementos(conjunto1);
+        int cantidadElementosInter = contarElementos(inter);
+
+        if (cantidadElementos1 == cantidadElementosInter){
+            return true;
+        } else {return false;
+
+            }
+    }
+
+    public int contarElementos(ConjuntoTDA conjunto){
+        int c=0;
+
+        while (!conjunto.conjuntoVacio()){
+            int elemento = conjunto.elegir();
+            conjunto.sacar(elemento);
+            c++;
+        }
+        return c;
+    }
+
+    public ConjuntoTDA interPilaCola(PilaTDA p, ColaTDA c){
+        ConjuntoTDA inter = new ConjuntoConLimiteTDAImpl();
+        inter.inicializarConjunto();
+        ConjuntoTDA elementosPila = new ConjuntoConLimiteTDAImpl();
+        ConjuntoTDA elementosCola = new ConjuntoConLimiteTDAImpl();
+        elementosPila.inicializarConjunto();
+        elementosCola.inicializarConjunto();
+        OperacionPila opPila = new OperacionPila();
+        OperacionCola opCola = new OperacionCola();
+        PilaTDA pAux = new PilaTDAImpl();
+        ColaTDA cAux = new ColaTDAImpl();
+        p.inicializarPila();
+        c.inicializarCola();
+
+        opPila.copiarPila(p,pAux);
+        opCola.copiarCola(c,cAux);
+
+        while (!pAux.pilaVacia()){
+            elementosPila.agregar(pAux.tope());
+            pAux.desapilar();
+        }
+        while (!cAux.colaVacia()){
+            elementosCola.agregar(cAux.primero());
+            cAux.desacolar();
+        }
+        while (!elementosPila.conjuntoVacio()){
+            int valor = elementosPila.elegir();
+            elementosPila.sacar(valor);
+
+            if (elementosCola.pertenece(valor)){
+                inter.agregar(valor);
+            }
+        }
+        return inter;
+    }
+    public boolean mismosElementos (PilaTDA p, ColaTDA c){
+        PilaTDA pAux = new PilaTDAImpl();
+        ColaTDA cAux = new ColaTDAImpl();
+        p.inicializarPila();
+        c.inicializarCola();
+
+        OperacionPila opPila = new OperacionPila();
+        OperacionCola opCola = new OperacionCola();
+        opPila.copiarPila(p,pAux);
+        opCola.copiarCola(c,cAux);
+
+        ConjuntoTDA elementosPila = new ConjuntoConLimiteTDAImpl();
+        ConjuntoTDA elementosCola = new ConjuntoConLimiteTDAImpl();
+        elementosPila.inicializarConjunto();
+        elementosCola.inicializarConjunto();
+
+        while (!pAux.pilaVacia()){
+            elementosPila.agregar(pAux.tope());
+            pAux.desapilar();
+        }
+        while (!cAux.colaVacia()){
+            elementosCola.agregar(cAux.primero());
+            cAux.desacolar();
+        }
+        while (!elementosPila.conjuntoVacio()){
+            int valor = elementosPila.elegir();
+            elementosPila.sacar(valor);
+
+            if (!elementosCola.pertenece(valor)){
+                return false;
+            }
+        }
+        return true;
+    }
+
 }
