@@ -1,9 +1,27 @@
 package com.uade.util;
-
 import com.uade.api.ConjuntoTDA;
 import com.uade.api.DiccionarioMultipleTDA;
 import com.uade.api.DiccionarioSimpleTDA;
 import com.uade.impl.DiccionarioMultipleDinamicoTDA;
+
+// combinar: Llama dos veces a agregarDiccionario para combinar los valores de dos diccionarios en un solo resultado.
+// Coste: O(n * m), donde n es el número de claves en d1 y d2, y m es el número promedio de valores por clave.
+
+// agregarDiccionario: Agrega todas las claves y valores de un diccionario a otro.
+// Coste: O(n * m), donde n es el número de claves y m el número promedio de valores por clave en d1.
+
+// interseccionDeValores: Calcula la intersección de valores para cada clave común en d1 y d2.
+// Coste: O(n * m^2), donde n es el número de claves y m es el número promedio de valores por clave.
+
+// interseccionClaves: Agrega al resultado las claves comunes en d1 y d2, junto con todos sus valores.
+// Coste: O(n^2 + n * m), donde n es el número de claves y m el número promedio de valores por clave.
+
+// interseccionClavesYElementosComunes: Agrega al resultado las claves comunes con solo los valores comunes entre d1 y d2.
+// Coste: O(n^2 + n * m + m^2), donde n es el número de claves y m es el número promedio de valores por clave.
+
+// generarDiccionarioSinonimos: Genera un diccionario donde cada significado apunta a las palabras que tienen ese significado.
+// Coste: O(n), donde n es el número de palabras en el diccionario simple d.
+
 
 public class OperacionesDiccionario {
 

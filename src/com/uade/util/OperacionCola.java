@@ -8,6 +8,15 @@ import com.uade.impl.ConjuntoConLimiteTDAImpl;
 import com.uade.impl.PilaTDAImpl;
 
 import java.util.Scanner;
+// eliminarRepetidos: Elimina elementos consecutivos repetidos de una cola, utilizando una cola auxiliar.
+// Coste: O(n), donde n es el número de elementos en la cola.
+
+// repartirCola: Distribuye alternativamente los elementos de una pila en dos pilas auxiliares.
+// Coste: O(n), donde n es el número de elementos en la pila original.
+
+// elementosRepetidos: Identifica los elementos consecutivos repetidos en una cola, almacenándolos en un conjunto.
+// Coste: O(n), donde n es el número de elementos en la cola.
+
 
 public class OperacionCola {
 

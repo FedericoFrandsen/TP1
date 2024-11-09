@@ -4,17 +4,21 @@ import com.uade.api.ConjuntoTDA;
 import com.uade.api.PilaTDA;
 import com.uade.impl.ConjuntoConLimiteTDAImpl;
 import com.uade.impl.PilaTDAImpl;
-
 import java.util.Scanner;
+// esCapicua: Verifica si una pila es capicúa, comparando la pila original con una versión invertida.
+// Coste: O(n), donde n es el número de elementos en la pila.
+
+// eliminarRepetidos: Elimina elementos consecutivos repetidos de una pila, usando una pila auxiliar.
+// Coste: O(n), donde n es el número de elementos en la pila.
+
+// repartirPila: Distribuye alternativamente los elementos de una pila original en dos pilas auxiliares.
+// Coste: O(n), donde n es el número de elementos en la pila original.
+
+// elementosRepetidos: Identifica los elementos consecutivos repetidos en una pila, almacenándolos en un conjunto.
+// Coste: O(n), donde n es el número de elementos en la pila.
+
 
 public class OperacionPila {
-
-    //a) Pasar una Pila a otra (dejándola en orden inverso)
-    //b) Copiar una Pila en otra (dejándola en el mismo orden que la original)
-    //c) Invertir el contenido de una Pila.
-    //d) Contar los elementos de una Pila
-    //e) Sumar los elementos de una Pila
-    //f) Calcular el promedio de los elementos de una Pila
 
     public void pasarPila(PilaTDA pilaOrigen, PilaTDA pilaDestino){
             while (!pilaOrigen.pilaVacia()){
@@ -156,8 +160,7 @@ public class OperacionPila {
         copiarPila(aux,pila);
     }
 
-    //c) Repartir una Pila P en dos mitades M1 y M2 de elementos consecutivos,
-    //respetando el orden. Asumir que la Pila P contiene un número par de elementos.
+
 
     public void repartirPila(PilaTDA pilaOriginal, PilaTDA m1, PilaTDA m2){
         boolean turno = true;
@@ -172,7 +175,7 @@ public class OperacionPila {
             turno =!turno;
         }
     }
-    //d) Generar el conjunto de elementos que se repiten en una Pila.
+
     public ConjuntoTDA elementosRepetidos(PilaTDA pila){
         PilaTDA aux = new PilaTDAImpl();
         aux.inicializarPila();
