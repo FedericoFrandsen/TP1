@@ -2,6 +2,7 @@ package com.uade.util;
 
 import com.uade.api.ConjuntoTDA;
 import com.uade.api.DiccionarioMultipleTDA;
+import com.uade.api.DiccionarioSimpleTDA;
 import com.uade.impl.DiccionarioMultipleDinamicoTDA;
 
 public class OperacionesDiccionario {
@@ -118,5 +119,24 @@ public class OperacionesDiccionario {
 
         return resultado;
     }
+
+    public DiccionarioMultipleTDA generarDiccionarioSinonimos(DiccionarioSimpleTDA d) {
+        DiccionarioMultipleTDA ds = new DiccionarioMultipleDinamicoTDA();
+        ds.inicializarDiccionario();
+
+        ConjuntoTDA palabras = d.Claves();
+
+        while (!palabras.conjuntoVacio()) {
+            int palabra = palabras.elegir();
+            palabras.sacar(palabra);
+
+            int significado = d.Recuperar(palabra);
+
+            ds.agregar(significado, palabra);
+        }
+
+        return ds;
+    }
+
 }
 
