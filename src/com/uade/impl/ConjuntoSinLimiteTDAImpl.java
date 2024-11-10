@@ -2,117 +2,92 @@ package com.uade.impl;
 import com.uade.api.ConjuntoTDA;
 
 import java.util.Random;
-//b) Tamaño máximo no acotado
-
-
-//InicializarConjunto: Solo se asigna null al puntero inicio.
+//InicializarConjunto: Solo se asigna un arreglo de tamaño inicial y se establece `cantidad` en 0.
 //Coste: O(1)
 
-//Agregar: Se debe verificar si el elemento ya existe en el conjunto (operación O(n)). Si no está, agregar el elemento en la cabeza de la lista es O(1).
+//Agregar (agregar): Primero verifica si el elemento ya está en el conjunto (operación O(n)). Si el elemento no existe y el arreglo está lleno, se llama a `expandirArreglo` (operación O(n)); en caso contrario, simplemente agrega el elemento al final (O(1)).
+//Coste promedio: O(n)
+//Coste peor caso: O(n)
+
+//Expandir arreglo (expandirArreglo): Duplica el tamaño del arreglo y copia todos los elementos del arreglo original al nuevo.
 //Coste: O(n)
 
-//Elegir (elegir):Se debe contar los elementos (O(n)) y luego recorrer la lista hasta el índice aleatorio (también O(n)).
+//Elegir (elegir): Selecciona un índice aleatorio y accede al elemento en el arreglo. Seleccionar el índice es O(1), pero contar elementos (en este caso, `cantidad`) es ya conocido.
+//Coste: O(1)
+
+//Sacar (sacar): En el peor caso, se recorre el arreglo para encontrar el elemento a eliminar y luego reorganiza el último elemento en la posición del eliminado.
 //Coste: O(n)
 
-//Sacar (sacar): En el peor caso, se debe recorrer toda la lista para encontrar el valor a eliminar.
-//Coste:O(n)
+//Pertenecer (pertenece): Recorre tdo el arreglo para verificar si el elemento ya está en el conjunto.
+//Coste: O(n)
 
-//Pertenecer (pertenece): Se debe recorrer toda la lista para verificar si el elemento está en el conjunto.
-//Coste:O(n)
-
-//Conjunto vacío (conjuntoVacio): Solo se verifica si inicio es null.
-//Coste:O(1)
-
-
-
+//Conjunto vacío (conjuntoVacio): Solo se verifica si `cantidad` es 0.
+//Coste: O(1)
 
 public class ConjuntoSinLimiteTDAImpl implements ConjuntoTDA {
-    private Random rand;
-
-    private class NodoConjunto {
-        int valor;
-        NodoConjunto siguiente;
-    }
-    private NodoConjunto inicio;
-
-
+    private int[] elementos;
+    private int cantidad;
+    private final int TAMANIO_INICIAL = 10;
 
     @Override
     public void inicializarConjunto() {
-        inicio = null;
+        elementos = new int[TAMANIO_INICIAL];
+        cantidad = 0;
     }
 
     @Override
     public void agregar(int x) {
         if (!pertenece(x)) {
-            NodoConjunto nuevoNodo = new NodoConjunto();
-            nuevoNodo.valor = x;
-            nuevoNodo.siguiente = inicio;
-            inicio = nuevoNodo; // Agregar el nuevo nodo al inicio de la lista
+            if (cantidad == elementos.length) {
+                expandirArreglo();
+            }
+            elementos[cantidad] = x;
+            cantidad++;
         }
+    }
+
+    private void expandirArreglo() {
+        int nuevoTamanio = elementos.length * 2;
+        int[] nuevoArreglo = new int[nuevoTamanio];
+        for (int i = 0; i < elementos.length; i++) {
+            nuevoArreglo[i] = elementos[i];
+        }
+        elementos = nuevoArreglo;
     }
 
     @Override
     public int elegir() {
         if (!conjuntoVacio()) {
             Random rand = new Random();
-            int cantidad = contarElementos();
             int numeroAleatorio = rand.nextInt(cantidad);
-
-            NodoConjunto actual = inicio;
-            for (int i = 0; i < numeroAleatorio; i++) {
-                actual = actual.siguiente;
-            }
-            return actual.valor;
+            return elementos[numeroAleatorio];
         }
         throw new RuntimeException("El conjunto está vacío.");
     }
 
     @Override
     public void sacar(int x) {
-        if (inicio == null){
-            return;
-        }
-
-        if (inicio.valor == x) { // Si el valor está en el primer nodo
-            inicio = inicio.siguiente;
-            return;
-        }
-        NodoConjunto actual = inicio;
-        while (actual.siguiente != null && actual.siguiente.valor != x) {
-            actual = actual.siguiente;
-        }
-
-        if (actual.siguiente != null) {
-            actual.siguiente = actual.siguiente.siguiente;
+        for (int i = 0; i < cantidad; i++) {
+            if (elementos[i] == x) {
+                elementos[i] = elementos[cantidad - 1];
+                cantidad--;
+                break;
+            }
         }
     }
 
     @Override
     public boolean pertenece(int x) {
-        NodoConjunto actual = inicio;
-        while (actual != null) {
-            if (actual.valor == x) {
+        for (int i = 0; i < cantidad; i++) {
+            if (elementos[i] == x) {
                 return true;
             }
-            actual = actual.siguiente;
         }
         return false;
     }
 
     @Override
     public boolean conjuntoVacio() {
-        return inicio == null;
-    }
-
-    //metodo auxiliar
-    private int contarElementos() {
-        NodoConjunto actual = inicio;
-        int contador = 0;
-        while (actual != null) {
-            contador++;
-            actual = actual.siguiente;
-        }
-        return contador;
+        return cantidad == 0;
     }
 }
