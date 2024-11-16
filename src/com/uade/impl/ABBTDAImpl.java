@@ -2,6 +2,38 @@ package com.uade.impl;
 
 import com.uade.api.ABBTDA;
 
+// inicializarArbol: Inicializa el árbol, asignando null a la raíz.
+// Coste: O(1)
+
+// raiz: Retorna el valor de la raíz si el árbol no está vacío.
+// Coste: O(1)
+
+// hijoIzq: Crea un nuevo ABB que apunta al subárbol izquierdo.
+// Coste: O(1)
+
+// hijoDer: Crea un nuevo ABB que apunta al subárbol derecho.
+// Coste: O(1)
+
+// agregar: Inserta un valor en el árbol llamando recursivamente a agregarRecursivo.
+// Coste: O(h), donde h es la altura del árbol.
+
+// agregarRecursivo: Busca la posición adecuada para insertar el valor recorriendo el árbol.
+// Coste: O(h)
+
+// eliminar: Elimina un valor del árbol llamando a eliminarRecursivo.
+// Coste: O(h)
+
+// eliminarRecursivo: Encuentra y elimina el nodo con el valor dado. Si el nodo tiene dos hijos, llama a encontrarMinimo.
+// Coste: O(h)
+
+// encontrarMinimo: Busca el nodo con el valor más pequeño recorriendo hacia la izquierda.
+// Coste: O(h)
+
+// arbolVacio: Verifica si la raíz es null.
+// Coste: O(1)
+
+//Si el arbol esta balanceado los costos serian O(log n)
+
 public class ABBTDAImpl implements ABBTDA {
     private NodoABB nodoRaiz;
 
