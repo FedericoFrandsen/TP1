@@ -1,7 +1,7 @@
 package com.uade.impl;
 
 import com.uade.api.ABBTDA;
-
+//h = altura arbol
 // inicializarArbol: Inicializa el árbol, asignando null a la raíz.
 // Coste: O(1)
 
