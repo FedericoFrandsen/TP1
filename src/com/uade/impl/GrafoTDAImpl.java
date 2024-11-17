@@ -3,6 +3,39 @@ package com.uade.impl;
 import com.uade.api.ConjuntoTDA;
 import com.uade.api.GrafoTDA;
 
+// inicializarGrafo: Inicializa la matriz de adyacencia con un tamaño fijo y el conjunto de vértices.
+// Coste espacial: O(n²) debido a la matriz de adyacencia, donde n es MAX_VERTICES.
+// Coste temporal: O(n²) debido a la inicialización de la matriz.
+
+// agregarVertice: Agrega un vértice al conjunto de vértices si no está presente.
+// Coste espacial: O(1).
+// Coste temporal: O(n), donde n es la cantidad de vértices en el conjunto, debido a la verificación en `pertenece`.
+
+// eliminarVertice: Elimina un vértice del conjunto y todas las aristas asociadas en la matriz.
+// Coste espacial: O(1).
+// Coste temporal: O(n), donde n es MAX_VERTICES, por recorrer todas las aristas asociadas al vértice.
+
+// vertices: Devuelve el conjunto de vértices activos en el grafo.
+// Coste espacial: O(1).
+// Coste temporal: O(1), ya que simplemente devuelve el conjunto.
+
+// agregarArista: Agrega o actualiza una arista en la matriz de adyacencia.
+// Coste espacial: O(1).
+// Coste temporal: O(1), al acceder directamente a la matriz en la posición [v1][v2].
+
+// eliminarArista: Elimina una arista asignando un valor especial (SIN_ARISTA) en la matriz.
+// Coste espacial: O(1).
+// Coste temporal: O(1), al acceder directamente a la matriz en la posición [v1][v2].
+
+// ExisteArista: Comprueba si hay una arista entre dos vértices.
+// Coste espacial: O(1).
+// Coste temporal: O(1), al acceder directamente a la matriz y verificar su valor.
+
+// pesoArista: Devuelve el peso de la arista entre dos vértices o lanza una excepción si no existe.
+// Coste espacial: O(1).
+// Coste temporal: O(1), al acceder directamente a la matriz en la posición [v1][v2].
+
+
 public class GrafoTDAImpl implements GrafoTDA {
 
     private static final int MAX_VERTICES = 100; // Tamaño máximo de la matriz
